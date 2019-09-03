@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import UserCard from './UserCard';
 
 class UserList extends React.Component {
 //CCR: C - Constructor
@@ -11,9 +12,12 @@ constructor() {
 }
 
 componentDidMount() {
-axios.get('').then((res)=> {
-    console.log(res)
-})
+    console.log(this.state.user)
+axios.get(`https://api.github.com/users/yoshimii`).then((res)=> {
+    this.setState({
+        user: res.data
+    })
+}).catch(err => console.log('error... errorr... does not compute'))
 }
 
 componentDidUpdate() {
@@ -21,9 +25,13 @@ componentDidUpdate() {
 }
 
 render() {
+    console.log(this.state.user)
     return (
         <div className='App'>
-            <p>GitHub UsersList</p>
+            <h1>GitHub Users</h1>
+            <UserCard
+            user={this.state.user}
+            />
         </div>
     )
 }
