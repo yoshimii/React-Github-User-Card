@@ -10,11 +10,13 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
+import { deepPurple } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Grid from '@material-ui/core/Grid';
+
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -35,7 +37,15 @@ const useStyles = makeStyles(theme => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: deepPurple[500],
+  },
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
   },
 }));
 
@@ -51,11 +61,12 @@ function FollowerCard(props) {
         <>
         {props.follower.map((follower)=> {
              return (
+                <Grid item xs={6}>
                 <Card className={classes.card} key={follower.id}>
                 <CardHeader
                   avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                      R
+                      <i class="fab fa-github-alt" ></i>
                     </Avatar>
                   }
                   action={
@@ -63,18 +74,18 @@ function FollowerCard(props) {
                       <MoreVertIcon />
                     </IconButton>
                   }
-                  title="Shrimp and Chorizo Paella"
-                  subheader="September 14, 2016"
+                  title={follower.name}
+                  subheader={follower.login}
                 />
                 <CardMedia
                   className={classes.media}
                   image={follower.avatar_url}
                   alt={follower.name}
-                  title="Paella dish"
+                  title={follower.name}
                 />
                 <CardContent>
                   <Typography variant="body2" color="textSecondary" component="p">
-                  {follower.location}
+                  {follower.location ? <Typography paragraph>{follower.location}</Typography> : <Typography paragraph>Ask me!</Typography> }
                   </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
@@ -97,11 +108,11 @@ function FollowerCard(props) {
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                   <CardContent>
-                    <Typography paragraph>{follower.bio}</Typography>
-                   
+                    {follower.bio}  
                   </CardContent>
                 </Collapse>
               </Card>
+              </Grid>
             );
                 
            

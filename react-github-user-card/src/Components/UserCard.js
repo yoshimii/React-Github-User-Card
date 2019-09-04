@@ -52,17 +52,15 @@ function UserCard(props) {
                 <Card className={classes.card} key={props.user.id}>
                 <CardHeader
                   avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-                      R
-                    </Avatar>
+                    <i class="fab fa-github-alt" ></i>
                   }
                   action={
                     <IconButton aria-label="settings">
                       <MoreVertIcon />
                     </IconButton>
                   }
-                  title="Shrimp and Chorizo Paella"
-                  subheader="September 14, 2016"
+                  title={props.user.name}
+                  subheader={props.user.login}
                 />
                 <CardMedia
                   className={classes.media}
@@ -99,7 +97,11 @@ function UserCard(props) {
                    
                   </CardContent>
                 </Collapse>
-              </Card>           
+              </Card>
+              {/* <div class="calendar">
+    
+    Loading the data just for you.
+</div>            */}
         </>
     )
 }

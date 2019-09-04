@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import UserCard from './UserCard';
 import FollowerCard from './FollowerCard';
+import Grid from '@material-ui/core/Grid';
+
 //CCR: C - class Component
 class UserList extends React.Component {
 //CCR: C - Constructor
@@ -43,14 +45,21 @@ render() {
     console.log(this.state.followers)
     return (
         <div className='App'>
+            <section className='user-card'>
             <h1>Emma's GitHub Network</h1>
             <UserCard
             user={this.state.user}
             />
-            <h1>Emma's Followers</h1>
+            </section>
+            <section className='follower-cards'>
+            <Grid container spacing={3}>
+          
             <FollowerCard
             follower={this.state.followers}
             />
+  
+            </Grid>
+            </section>
         </div>
     )
 }
