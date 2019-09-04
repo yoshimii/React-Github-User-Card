@@ -43,10 +43,11 @@ render() {
     console.log(this.state.followers)
     return (
         <div className='App'>
-            <h1>GitHub Users</h1>
+            <h1>Emma's GitHub Network</h1>
             <UserCard
             user={this.state.user}
             />
+            <h1>Emma's Followers</h1>
             <FollowerCard
             follower={this.state.followers}
             />
