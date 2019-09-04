@@ -98,10 +98,8 @@ function UserCard(props) {
                   </CardContent>
                 </Collapse>
               </Card>
-              {/* <div class="calendar">
-    
-    Loading the data just for you.
-</div>            */}
+              <div class="calendar">
+              </div>           
         </>
     )
 }
